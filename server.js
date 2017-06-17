@@ -17,9 +17,9 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs')
-})
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs')
+// })
 
 app.use(express.static(__dirname + '/public'))
 
@@ -31,14 +31,24 @@ hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase()
 })
 
-app.get('/', (req, res) => {
-  res.send({
-    name : 'rohan',
-    collegeDetails : {
-      collegeName : 'Rajasthan Technical University',
-      specialization : 'Computer Science'
-    }
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: "Projects Page"
   })
+})
+
+// app.get('/', (req, res) => {
+//   res.send({
+//     name : 'rohan',
+//     collegeDetails : {
+//       collegeName : 'Rajasthan Technical University',
+//       specialization : 'Computer Science'
+//     }
+//   })
+// })
+
+app.get('/home', (req, res) => {
+  res.render('home.hbs')
 })
 
 app.get('/about', (req, res) => {
